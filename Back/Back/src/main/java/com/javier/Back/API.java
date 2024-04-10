@@ -12,7 +12,7 @@ public class API {
     @GetMapping("/obtenerDatos")
     public ArrayList<DatosJSON> datos(){
         DataHanding data = new DataHanding();
-        String fichero = "./src/main/resources/cp-national-datafile.json";
+        String fichero = "Back/Back/src/main/resources/cp-national-datafile-test.json";
         return data.obtenDatos(fichero);
 
     }
@@ -50,7 +50,7 @@ public class API {
     @GetMapping("/obtenerDatosAyudaHumanitaria")
     public ArrayList<DatosXLSX> getDatosAyudaHumanitaria(){
         DataHanding data = new DataHanding();
-        String fichero = "src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
+        String fichero = "Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
         return data.obtenDatosPoblacion(fichero);
     }
 }
