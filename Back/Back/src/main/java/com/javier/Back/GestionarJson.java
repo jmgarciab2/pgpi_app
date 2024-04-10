@@ -76,7 +76,7 @@ public class GestionarJson {
 
             // Ordenamos la lista por msCode y luego por year
             listAux.sort(
-                    Comparator.comparing(DatosJSON::getMsCode)
+                    Comparator.comparing(DatosJSON::getMscode)
                             .thenComparing(Comparator.comparing(DatosJSON::getYear))
             );
 
@@ -105,7 +105,7 @@ public class GestionarJson {
         try {
             // Ordenamos la lista por msCode y luego por year
             listaDatos.sort(
-                    Comparator.comparing(DatosJSON::getMsCode)
+                    Comparator.comparing(DatosJSON::getMscode)
                             .thenComparing(Comparator.comparing(DatosJSON::getYear))
             );
 
