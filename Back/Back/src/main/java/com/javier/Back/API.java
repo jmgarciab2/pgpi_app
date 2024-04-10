@@ -53,5 +53,11 @@ public class API {
         String fichero = "Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
         return data.obtenDatosPoblacion(fichero);
     }
+    @PutMapping("/recibirPedido")
+    public ArrayList<String> recibirPedido(@RequestBody Pedido pedido){
+        DataHanding data = new DataHanding();
+        return data.recibirPedido(pedido);
+    }
+
 
 }
