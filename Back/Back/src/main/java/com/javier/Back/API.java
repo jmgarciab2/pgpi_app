@@ -47,4 +47,10 @@ public class API {
         // Llamamos al método de eliminar datos y nos devuelve ya la lista actualizada
         return data.eliminarDato(_id,fichero);
     }
+    @GetMapping("/obtenerDatosAyudaHumanitaria")
+    public ArrayList<DatosXLSX> getDatosAyudaHumanitaria(){
+        DataHanding data = new DataHanding();
+        String fichero = "src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
+        return data.obtenDatosPoblacion(fichero);
+    }
 }
