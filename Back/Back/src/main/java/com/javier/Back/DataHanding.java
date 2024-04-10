@@ -98,4 +98,15 @@ public class DataHanding {
 
         return lAux;
     }
+    public ArrayList<DatosXLSX> obtenDatosPoblacion(String fichero) {
+        GestionXLSX lector = new GestionXLSX();
+        ArrayList<DatosXLSX> listaDatos = lector.leerDatosDesdeXLSX(fichero);
+        return listaDatos;
+    }
+    public ArrayList<String> recibirPedido(Pedido pedido) {
+        GestionXLSX lector = new GestionXLSX();
+        ArrayList<String> result = lector.recibirPedidoAyuda(pedido.getNombreONG(), pedido.getDirecciones(), pedido.getNombresProveedor(), pedido.getProductos(), pedido.getCantidades());
+        return result;
+    }
+
 }
