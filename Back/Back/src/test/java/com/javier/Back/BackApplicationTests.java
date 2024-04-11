@@ -22,13 +22,13 @@ class BackApplicationTests {
 		DataHanding dataHanding = new DataHanding();
 		DatosJSON datoAntiguo = new DatosJSON(); // Ajusta según tu estructura real
 		datoAntiguo.set_id(UUID.fromString(UUID.randomUUID().toString()));
-		datoAntiguo.setMsCode("MS002"); // Ajusta según tu estructura real
+		datoAntiguo.setMscode("MS002"); // Ajusta según tu estructura real
 		datoAntiguo.setYear("2021");
 		// Puedes establecer otros atributos según tu estructura de DatosJSON
 
 		DatosJSON datoNuevo = new DatosJSON(); // Ajusta según tu estructura real
 		datoNuevo.set_id(datoAntiguo.get_id());
-		datoNuevo.setMsCode("MS002"); // Ajusta según tu estructura real
+		datoNuevo.setMscode("MS002"); // Ajusta según tu estructura real
 		datoNuevo.setYear("2022");
 		// Puedes establecer otros atributos según tu estructura de DatosJSON
 		//añado el dato para que pueda probarlo
@@ -44,7 +44,7 @@ class BackApplicationTests {
 		DataHanding dataHanding = new DataHanding();
 		DatosJSON datoEliminar = new DatosJSON(); // Ajusta según tu estructura real
 		datoEliminar.set_id(UUID.fromString(UUID.randomUUID().toString()));
-		datoEliminar.setMsCode("MS003"); // Ajusta según tu estructura real
+		datoEliminar.setMscode("MS003"); // Ajusta según tu estructura real
 		datoEliminar.setYear("2021");
 		// Puedes establecer otros atributos según tu estructura de DatosJSON
 		//añado el dato para que pueda probarlo

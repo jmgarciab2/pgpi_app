@@ -1,5 +1,7 @@
 package com.javier.Back;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -58,6 +60,26 @@ public class API {
         DataHanding data = new DataHanding();
         return data.recibirPedido(pedido);
     }
+    //Registro
+    @PostMapping("/registro")
+    public ResponseEntity<String> registrarUsuario(@RequestBody Usuario nuevoUsuario) {
+        RegistroUsuario registroUsuario = new RegistroUsuario();
+        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña())) {
+            try {
+                // Llamamos al método de RegistroUsuario para registrar el nuevo usuario
+                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
 
+                // Retorna una respuesta exitosa si el usuario se registró correctamente
+                return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado correctamente.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Retorna un mensaje de error si hubo algún problema al registrar el usuario
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar el usuario.");
+            }
+        } else {
+            // Retorna un mensaje de error si el usuario ya está registrado
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya está registrado.");
+        }
+    }
 
 }

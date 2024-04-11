@@ -109,36 +109,4 @@ public class DataHanding {
         ArrayList<String> result = lector.recibirPedidoAyuda(pedido.getNombreONG(), pedido.getDirecciones(), pedido.getNombresProveedor(), pedido.getProductos(), pedido.getCantidades());
         return result;
     }
-    //inicio sesion
-    public Jefe_Establecimiento comprobarJefe(String email, String password) throws ClassNotFoundException, SQLException {
-        Jefe_Establecimiento jefeAux = new Jefe_Establecimiento();
-        //Consulta BBDD
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conexionBBDD = DriverManager.getConnection("jdbc:mysql://nlcapacities.com:7002/nlcapacities", "dom-nlcapacities", "rg48Q59Rt7-97");
-        Statement statement = conexionBBDD.createStatement();
-        ResultSet resultSet = statement.executeQuery(String.format("SELECT usuario.name, usuario.apellido, usuario.Email, jefe_establecimiento.Direccion, jefe_establecimiento.Ciudad, jefe_establecimiento.Codigo_Postal, jefe_establecimiento.Nombre_Establecimiento, jefe_establecimiento.estado, jefe_establecimiento.CIF from usuario JOIN jefe_establecimiento ON usuario.ID = jefe_establecimiento.ID AND usuario.Email = '%s' AND '%s' = usuario.password", email, password));
-        while (resultSet.next())
-        {
-            String nombre = resultSet.getString("name");
-            String apellido = resultSet.getString("apellido");
-            String Email = resultSet.getString("Email");
-            String direccion = resultSet.getString("Direccion");
-            String ciudad = resultSet.getString("Ciudad");
-            String Codigo_Postal = resultSet.getString("Codigo_Postal");
-            String Nombre_Establecimiento = resultSet.getString("Nombre_Establecimiento");
-            String estado = resultSet.getString("estado");
-            String cif = resultSet.getString("CIF");
-            jefeAux.setName(nombre);
-            jefeAux.setApellido(apellido);
-            jefeAux.setEmail(Email);
-            jefeAux.setDireccion(direccion);
-            jefeAux.setCiudad(ciudad);
-            jefeAux.setCodigo_Postal(Codigo_Postal);
-            jefeAux.setNombre_establecimiento(Nombre_Establecimiento);
-            jefeAux.setEstado(estado);
-            jefeAux.setCIF(cif);
-        }
-        conexionBBDD.close();
-        return jefeAux;
-    }
 }

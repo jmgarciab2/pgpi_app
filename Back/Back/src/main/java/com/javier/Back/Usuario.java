@@ -1,41 +1,42 @@
 package com.javier.Back;
 
-import com.javier.Back.Pedido;
-
 import java.util.ArrayList;
-import java.util.Date;
 
-public class Usuario {
-    private String usuario;
-    private String contraseña;
+public class Usuario{
+    private String id;
+    private String contrasena;
     private String email;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private ArrayList<Pedido> pedidos;
 
     // Constructor
-    public Usuario(String usuario, String contraseña, String email, Date fechaNacimiento) {
-        this.usuario = usuario;
-        this.contraseña = contraseña;
+    public Usuario(){
+
+    }
+    public Usuario(String id, String contrasena, String email, String fechaNacimiento, ArrayList<Pedido> pedidos) {
+        this.id = id;
+        this.contrasena = contrasena;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
-        this.pedidos = new ArrayList<>();
+        this.pedidos = pedidos;
     }
+
 
     // Getters y setters
     public String getUsuario() {
-        return usuario;
+        return id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String id) {
+        this.id = id;
     }
 
     public String getContraseña() {
-        return contraseña;
+        return contrasena;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.contrasena = contraseña;
     }
 
     public String getEmail() {
@@ -46,11 +47,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

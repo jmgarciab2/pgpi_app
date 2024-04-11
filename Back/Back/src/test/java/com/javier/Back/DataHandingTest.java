@@ -14,13 +14,13 @@ public class DataHandingTest {
     public void modificarDato() {
         DatosJSON datoAntiguo = new DatosJSON();
         datoAntiguo.set_id(UUID.fromString(UUID.randomUUID().toString()));
-        datoAntiguo.setMsCode("MS002");
+        datoAntiguo.setMscode("MS002");
         datoAntiguo.setYear("2021");
         // Puedes establecer otros atributos según tu estructura de DatosJSON
 
         DatosJSON datoNuevo = new DatosJSON();
         datoNuevo.set_id(datoAntiguo.get_id());
-        datoNuevo.setMsCode("MS002");
+        datoNuevo.setMscode("MS002");
         datoNuevo.setYear("2022");
         // Puedes establecer otros atributos según tu estructura de DatosJSON
         //añado el dato para que pueda probarlo
@@ -35,7 +35,7 @@ public class DataHandingTest {
     public void eliminarDato() {
         DatosJSON datoEliminar = new DatosJSON();
         datoEliminar.set_id(UUID.fromString(UUID.randomUUID().toString()));
-        datoEliminar.setMsCode("MS003");
+        datoEliminar.setMscode("MS003");
         datoEliminar.setYear("2021");
         // Puedes establecer otros atributos según tu estructura de DatosJSON
         //añado el dato para que pueda probarlo

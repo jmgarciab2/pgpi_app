@@ -28,6 +28,7 @@ public class GestionarJson {
             return new ArrayList<>(); // Si no ha leído nada, devuelve un array vacío
         }
     }
+
     //Método que leerá el fichero de MsCode_json.json y sacará la lista en función del msCode pasado
     public ArrayList<DatosJSON> leerJSONAgrupado(String fichero2, String msCode) {
         // Lista para almacenar los objetos DatosJSON resultantes
