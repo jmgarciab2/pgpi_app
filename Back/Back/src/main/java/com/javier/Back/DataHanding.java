@@ -108,5 +108,6 @@ public class DataHanding {
         ArrayList<String> result = lector.recibirPedidoAyuda(pedido.getNombreONG(), pedido.getDirecciones(), pedido.getNombresProveedor(), pedido.getProductos(), pedido.getCantidades());
         return result;
     }
+    //inicio sesion
 
 }
