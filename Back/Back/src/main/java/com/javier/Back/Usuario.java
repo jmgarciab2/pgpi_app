@@ -3,7 +3,7 @@ package com.javier.Back;
 import java.util.ArrayList;
 
 public class Usuario{
-    private String id;
+    private String usuario;
     private String contrasena;
     private String email;
     private String fechaNacimiento;
@@ -13,8 +13,8 @@ public class Usuario{
     public Usuario(){
 
     }
-    public Usuario(String id, String contrasena, String email, String fechaNacimiento, ArrayList<Pedido> pedidos) {
-        this.id = id;
+    public Usuario(String usuario, String contrasena, String email, String fechaNacimiento, ArrayList<Pedido> pedidos) {
+        this.usuario = usuario;
         this.contrasena = contrasena;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
@@ -24,11 +24,11 @@ public class Usuario{
 
     // Getters y setters
     public String getUsuario() {
-        return id;
+        return usuario;
     }
 
     public void setUsuario(String id) {
-        this.id = id;
+        this.usuario = id;
     }
 
     public String getContraseña() {

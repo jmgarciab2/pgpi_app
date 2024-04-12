@@ -11,6 +11,8 @@ import java.util.UUID;
 public class API {
     //Aquí se van a crear las peticiones a la API para poder crear, eliminar y modificar los datos de los ficheros JSON
     //Llamarán a los métodos de la clase DataHanding para gestionar los datos
+    private final RegistroUsuario registroUsuario = new RegistroUsuario();
+
     @GetMapping("/obtenerDatos")
     public ArrayList<DatosJSON> datos(){
         DataHanding data = new DataHanding();
@@ -34,7 +36,7 @@ public class API {
     }
 
     @PutMapping("/actualizarDatos")
-    public ArrayList<DatosJSON> modificarDato(@RequestBody ArrayList<DatosJSON> datosActualizar) throws ClassNotFoundException {
+    public ArrayList<DatosJSON> modificarDato(@RequestBody ArrayList<DatosJSON> datosActualizar) {
         DataHanding data = new DataHanding();
         String fichero = "./src/main/resources/cp-national-datafile.json";
         DatosJSON datoAntiguo = datosActualizar.get(0);
@@ -63,7 +65,6 @@ public class API {
     //Registro
     @PostMapping("/registro")
     public ResponseEntity<String> registrarUsuario(@RequestBody Usuario nuevoUsuario) {
-        RegistroUsuario registroUsuario = new RegistroUsuario();
         if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña())) {
             try {
                 // Llamamos al método de RegistroUsuario para registrar el nuevo usuario
@@ -80,6 +81,11 @@ public class API {
             // Retorna un mensaje de error si el usuario ya está registrado
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya está registrado.");
         }
+    }
+
+    @GetMapping("/inicioSesion")
+    public ResponseEntity<String> iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena){
+        return null;
     }
 
 }

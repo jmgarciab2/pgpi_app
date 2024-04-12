@@ -1,22 +1,19 @@
 package com.javier.Back;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Date;
+
 
 public class RegistroUsuario {
-    private static final String USUARIOS_JSON_FILE = "Back/Back/src/main/resources/usuarios.json";
+    private static final String USUARIOS_JSON_FILE = "./src/main/resources/usuarios.json";
 
     // Función para cargar usuarios desde el archivo JSON
     private static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
@@ -37,30 +34,32 @@ public class RegistroUsuario {
     }
 
     // Función para verificar si un usuario ya está registrado en la base de datos
-    static boolean usuarioYaRegistrado(String usuario, String contraseña) {
+    static boolean usuarioYaRegistrado(String usuario, String contrasena) {
+        boolean encontrado = false;
         try {
             ArrayList<Usuario> usuarios = cargarUsuariosDesdeJSON();
+
             System.out.println(usuarios);
             for (Usuario u : usuarios) {
-                if (u.getUsuario().equals(usuario) && u.getContraseña().equals(contraseña)) {
-                    return true;
+                if (u.getUsuario().equals(usuario) && u.getContraseña().equals(contrasena)) {
+                    encontrado = true;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return encontrado;
     }
 
     // Función para registrar un nuevo usuario
-    public static void registrarUsuario(String usuario, String contraseña, String email, String fechaNacimiento) {
-        if (!usuarioYaRegistrado(usuario, contraseña)) {
+    public static void registrarUsuario(String usuario, String contrasena, String email, String fechaNacimiento) {
+        if (!usuarioYaRegistrado(usuario, contrasena)) {
             try {
                 // Cargar usuarios existentes desde el archivo JSON
-                List<Usuario> usuarios = cargarUsuariosDesdeJSON();
+                ArrayList<Usuario> usuarios = cargarUsuariosDesdeJSON();
 
                 // Crear una instancia de Usuario con los datos proporcionados
-                Usuario nuevoUsuario = new Usuario(usuario, contraseña, email, fechaNacimiento, new ArrayList<Pedido>());
+                Usuario nuevoUsuario = new Usuario(usuario, contrasena, email, fechaNacimiento, new ArrayList<Pedido>());
 
                 // Agregar el nuevo usuario a la lista de usuarios
                 usuarios.add(nuevoUsuario);
