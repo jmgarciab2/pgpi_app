@@ -171,6 +171,38 @@ public class DataService {
         }
     }
 
+    public static ArrayList<DatosXLSX> ObtenerDatosXLSX() throws IOException, URISyntaxException{
+        ArrayList<DatosXLSX> datos = new ArrayList<>();
 
+        // Construir la URL con el msCode proporcionado
+        URI uri = new URI(urlPrefix + "/obtenerDatosAyudaHumanitaria/");
+
+        // Crear la solicitud GET
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(uri).GET().build();
+
+        // Crear un objeto Gson para deserializar la respuesta
+        Gson gson = new Gson();
+
+        // Variables para almacenar el resultado de la solicitud
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+
+        try {
+            // Enviar la solicitud y obtener la respuesta
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+
+            // Deserializar la respuesta a la lista de DatosJSON
+            datos = gson.fromJson(resultado, new TypeToken<ArrayList<DatosXLSX>>() {
+            }.getType());
+
+        } catch (IOException | InterruptedException e) {
+            // Manejar las excepciones
+            throw new RuntimeException(e);
+        }
+
+        // Devolver la lista de datos
+        return datos;
+    }
 }
 
