@@ -1,6 +1,7 @@
 package org.vaadin.example;
 
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route("datos-ayuda-humanitaria-origen")
-@PWA(name = "Productos de Ayuda Humanitaria por Origen", shortName = "Productos de Ayuda Humanitaria")
 
 public class DatosAyudaHumanitariaOrigenView extends VerticalLayout {
 
@@ -22,7 +22,8 @@ public class DatosAyudaHumanitariaOrigenView extends VerticalLayout {
         // Configuración del diseño
         setSizeFull();
         setAlignItems(Alignment.CENTER);
-
+        H1 titulo = new H1("Mostrando Proveedores de Ayuda Humanitaria");
+        add(titulo);
         // Crear la lista de datos de productos de ayuda humanitaria
         List<DatosXLSX> productos = crearListaProductos();
 

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class DataService {
-    private static final String urlPrefix = "http://backend:8081";
+    private static final String urlPrefix = "http://localhost:8081";
     public static ArrayList<DatosJSON> obtenerListaDatos()  throws IOException, URISyntaxException {
         ArrayList<DatosJSON> datos = new ArrayList<>();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(urlPrefix + "/obtenerDatos")).GET().build();
@@ -175,7 +175,7 @@ public class DataService {
         ArrayList<DatosXLSX> datos = new ArrayList<>();
 
         // Construir la URL con el msCode proporcionado
-        URI uri = new URI(urlPrefix + "/obtenerDatosAyudaHumanitaria/");
+        URI uri = new URI(urlPrefix + "/obtenerDatosAyudaHumanitaria");
 
         // Crear la solicitud GET
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(uri).GET().build();
