@@ -1,6 +1,7 @@
 package org.vaadin.example;
 
 
+import com.vaadin.flow.component.html.Anchor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.Key;
@@ -41,9 +42,13 @@ public class MainView extends VerticalLayout {
     public MainView(@Autowired GreetService service) {
         //Arrancamos la pagina principal
 
-        Principal pp = new Principal();
-        pp.pagPrincipal();
-        add(pp);
+    // Configuración del diseño
+        setSizeFull();
+        setAlignItems(Alignment.CENTER);
+
+        // Crear un enlace para acceder a DatosAyudaHumanitariaOrigenView
+        Anchor link = new Anchor("datos-ayuda-humanitaria-origen", "Ver Datos de Ayuda Humanitaria por Origen");
+        add(link);
     }
 
 }
