@@ -109,4 +109,15 @@ public class DataHanding {
         ArrayList<String> result = lector.recibirPedidoAyuda(pedido.getNombreONG(), pedido.getDirecciones(), pedido.getNombresProveedor(), pedido.getProductos(), pedido.getCantidades());
         return result;
     }
+    public ArrayList<DatosXLSX> filtrarProveedor(String proveedor){
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        ArrayList<DatosXLSX> listaAux = new ArrayList<DatosXLSX>();
+        lista = obtenDatosPoblacion("Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx");
+        for(int i = 0; i < lista.size(); i++){
+            if (lista.get(i).getProveedorOrigen().equals(proveedor)) {
+                listaAux.add(lista.get(i).getProveedorOrigen());
+            }
+        }
+        return listaAux;
+    }
 }

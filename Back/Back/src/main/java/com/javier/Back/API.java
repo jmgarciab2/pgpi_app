@@ -87,5 +87,11 @@ public class API {
     public ResponseEntity<String> iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena){
         return null;
     }
-
+    @GetMapping("/filtrado")
+    public ArrayList<DatosXLSX> filtrarProveedor(@PathVariable String proveedor){
+        DataHanding dataHanding = new DataHanding();
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        lista = dataHanding.filtrarProveedor(proveedor);
+        return lista;
+    }
 }
