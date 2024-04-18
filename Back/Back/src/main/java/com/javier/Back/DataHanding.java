@@ -130,7 +130,7 @@ public class DataHanding {
             return -1;//no se ha cargado correctamente la lista de usuarios
         }else{
             for(int i = 0; i < usuarios.size(); i++){
-                if(usuarios.get(i).getUsuario().equals(usuario) && usuarios.get(i).getContraseña().equals(contrasena)){
+                if(usuarios.get(i).getUsuario().equals(usuario) && usuarios.get(i).getContrasena().equals(contrasena)){
                     respuesta = 1;
                     return respuesta;
                 }

@@ -66,10 +66,10 @@ public class API {
     //Registro
     @PostMapping("/registro")
     public ResponseEntity<String> registrarUsuario(@RequestBody Usuario nuevoUsuario) {
-        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña())) {
+        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena())) {
             try {
                 // Llamamos al método de RegistroUsuario para registrar el nuevo usuario
-                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
+                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
 
                 // Retorna una respuesta exitosa si el usuario se registró correctamente
                 return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado correctamente.");
@@ -85,7 +85,7 @@ public class API {
     }
 
     @GetMapping("/inicioSesion")
-    public int iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena) throws IOException {
+    public int iniciarSesion(@RequestParam String usuario, @RequestParam String contrasena) throws IOException {
         DataHanding dataHanding = new DataHanding();
         int respuesta = dataHanding.comprobarInicioSesion(usuario, contrasena);
         return respuesta;
