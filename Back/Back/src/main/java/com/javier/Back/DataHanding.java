@@ -115,7 +115,7 @@ public class DataHanding {
         lista = obtenDatosPoblacion("Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx");
         for(int i = 0; i < lista.size(); i++){
             if (lista.get(i).getProveedorOrigen().equals(proveedor)) {
-                listaAux.add(lista.get(i).getProveedorOrigen());
+                listaAux.add(lista.get(i));
             }
         }
         return listaAux;

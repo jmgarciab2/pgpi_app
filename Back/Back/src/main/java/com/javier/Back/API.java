@@ -88,7 +88,7 @@ public class API {
         return null;
     }
     @GetMapping("/filtrado")
-    public ArrayList<DatosXLSX> filtrarProveedor(@PathVariable String proveedor){
+    public ArrayList<DatosXLSX> filtrarProveedor(@RequestParam String proveedor){
         DataHanding dataHanding = new DataHanding();
         ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
         lista = dataHanding.filtrarProveedor(proveedor);

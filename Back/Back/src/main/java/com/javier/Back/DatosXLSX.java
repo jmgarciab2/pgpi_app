@@ -13,7 +13,7 @@ public class DatosXLSX {
         this.tiempoEntregaDias = tiempoEntregaDias;
     }
 
-    public DatosXLSX getProveedorOrigen() {
+    public String getProveedorOrigen() {
         return proveedorOrigen;
     }
 
