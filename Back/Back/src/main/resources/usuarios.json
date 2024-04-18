@@ -3,29 +3,29 @@
   "email" : "usuario1@example.com",
   "fechaNacimiento" : "1990-01-01",
   "pedidos" : [ ],
-  "contraseña" : 1
+  "contrasena" : 1
 }, {
   "usuario" : "usuario2",
   "email" : "usuario2@example.com",
   "fechaNacimiento" : "1995-05-05",
   "pedidos" : [ ],
-  "contraseña" : null
+  "contrasena" : "aaaa"
 }, {
   "usuario" : "usuario3",
   "email" : "usuario3@example.com",
   "fechaNacimiento" : "1985-10-10",
   "pedidos" : [ ],
-  "contraseña" : null
+  "contrasena" : null
 }, {
   "usuario" : "usuario4",
   "email" : "usuario4@example.com",
   "fechaNacimiento" : "1990-01-01",
   "pedidos" : [ ],
-  "contraseña" : null
+  "contrasena" : null
 }, {
   "usuario" : "usuario5",
   "email" : "usuario5@example.com",
   "fechaNacimiento" : "1990-03-01",
   "pedidos" : [ ],
-  "contraseña" : null
+  "contrasena" : null
 } ]

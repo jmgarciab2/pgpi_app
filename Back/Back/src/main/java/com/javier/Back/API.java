@@ -66,10 +66,10 @@ public class API {
     //Registro
     @PostMapping("/registro")
     public ResponseEntity<String> registrarUsuario(@RequestBody Usuario nuevoUsuario) {
-        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña())) {
+        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena())) {
             try {
                 // Llamamos al método de RegistroUsuario para registrar el nuevo usuario
-                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
+                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
 
                 // Retorna una respuesta exitosa si el usuario se registró correctamente
                 return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado correctamente.");

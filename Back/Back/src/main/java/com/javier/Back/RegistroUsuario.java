@@ -41,7 +41,7 @@ public class RegistroUsuario {
 
             System.out.println(usuarios);
             for (Usuario u : usuarios) {
-                if (u.getUsuario().equals(usuario) && u.getContraseña().equals(contrasena)) {
+                if (u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)) {
                     encontrado = true;
                 }
             }
