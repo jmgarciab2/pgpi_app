@@ -1,5 +1,8 @@
 package com.javier.Back;
 
+import org.springframework.http.ResponseEntity;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -92,7 +95,6 @@ public class DataHanding {
                     lAux = gestor.escribirLista(ficherito,listaDatos);
                 }
 
-
         } catch (RuntimeException e) {
             throw new RuntimeException("Error en la manipulación del archivo JSON", e);
         }
@@ -119,5 +121,21 @@ public class DataHanding {
             }
         }
         return listaAux;
+    }
+    public int comprobarInicioSesion(String usuario,String contrasena) throws IOException {
+        RegistroUsuario registroUsuario = new RegistroUsuario();
+        ArrayList<Usuario> usuarios = registroUsuario.cargarUsuariosDesdeJSON();
+        int respuesta = -1;
+        if(usuarios.isEmpty() == true){
+            return -1;//no se ha cargado correctamente la lista de usuarios
+        }else{
+            for(int i = 0; i < usuarios.size(); i++){
+                if(usuarios.get(i).getUsuario().equals(usuario) && usuarios.get(i).getContraseña().equals(contrasena)){
+                    respuesta = 1;
+                    return respuesta;
+                }
+            }
+        }
+        return 0;
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -84,8 +85,10 @@ public class API {
     }
 
     @GetMapping("/inicioSesion")
-    public ResponseEntity<String> iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena){
-        return null;
+    public int iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena) throws IOException {
+        DataHanding dataHanding = new DataHanding();
+        int respuesta = dataHanding.comprobarInicioSesion(usuario, contrasena);
+        return respuesta;
     }
     @GetMapping("/filtrado")
     public ArrayList<DatosXLSX> filtrarProveedor(@RequestParam String proveedor){
