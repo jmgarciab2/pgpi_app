@@ -1,9 +1,9 @@
 [ {
-  "usuario" : "usuario1",
+  "usuario" : "usuario",
   "email" : "usuario1@example.com",
   "fechaNacimiento" : "1990-01-01",
   "pedidos" : [ ],
-  "contraseña" : null
+  "contraseña" : 1
 }, {
   "usuario" : "usuario2",
   "email" : "usuario2@example.com",

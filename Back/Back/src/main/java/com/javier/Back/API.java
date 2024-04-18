@@ -85,7 +85,7 @@ public class API {
     }
 
     @GetMapping("/inicioSesion")
-    public int iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena) throws IOException {
+    public int iniciarSesion(@RequestParam String usuario, @RequestParam String contrasena) throws IOException {
         DataHanding dataHanding = new DataHanding();
         int respuesta = dataHanding.comprobarInicioSesion(usuario, contrasena);
         return respuesta;

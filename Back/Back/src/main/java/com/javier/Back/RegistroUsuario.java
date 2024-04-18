@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class RegistroUsuario {
-    private static final String USUARIOS_JSON_FILE = "./src/main/resources/usuarios.json";
+    private static final String USUARIOS_JSON_FILE = "Back/Back/src/main/resources/usuarios.json";
 
     // Función para cargar usuarios desde el archivo JSON
     static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
