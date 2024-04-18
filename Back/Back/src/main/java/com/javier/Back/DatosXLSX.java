@@ -1,7 +1,5 @@
 package com.javier.Back;
 
-import java.util.ArrayList;
-
 public class DatosXLSX {
     private String proveedorOrigen;
     private String referencia;

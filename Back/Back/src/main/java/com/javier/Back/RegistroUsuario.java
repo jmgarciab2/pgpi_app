@@ -16,7 +16,7 @@ public class RegistroUsuario {
     private static final String USUARIOS_JSON_FILE = "./src/main/resources/usuarios.json";
 
     // Función para cargar usuarios desde el archivo JSON
-    private static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
+    static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
 
         try {
             // Lee el fichero que le pasemos y lo carga en un reader
