@@ -98,9 +98,9 @@ public class API {
         return lista;
     }
     @GetMapping("/imprimir")
-    public ArrayList<DatosXLSX> imprimirPedido(@RequestParam Pedido pedido){
+    public ArrayList<DatosXLSX> imprimirPedido(@RequestBody Pedido pedido){
         GestionPDF gestionPDF = new GestionPDF();
-        String file = "Info del pedido" + String.valueOf(pedido.getId()) + ".pdf" ;
+        String file = "Back/Back/src/main/resources/Impresion/Info del pedido" + String.valueOf(pedido.getId()) + ".pdf" ;
         ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
         gestionPDF.imprimirPedidoEnPDF(pedido, file);
         return lista;
