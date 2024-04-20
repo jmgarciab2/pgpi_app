@@ -97,4 +97,12 @@ public class API {
         lista = dataHanding.filtrarProveedor(proveedor);
         return lista;
     }
+    @GetMapping("/imprimir")
+    public ArrayList<DatosXLSX> imprimirPedido(@RequestParam Pedido pedido){
+        GestionPDF gestionPDF = new GestionPDF();
+        String file = "Info del pedido" + String.valueOf(pedido.getId()) + ".pdf" ;
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        gestionPDF.imprimirPedidoEnPDF(pedido, file);
+        return lista;
+    }
 }
