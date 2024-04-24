@@ -1,5 +1,8 @@
 package com.javier.Back;
 
+import org.springframework.http.ResponseEntity;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -92,7 +95,6 @@ public class DataHanding {
                     lAux = gestor.escribirLista(ficherito,listaDatos);
                 }
 
-
         } catch (RuntimeException e) {
             throw new RuntimeException("Error en la manipulación del archivo JSON", e);
         }
@@ -108,5 +110,32 @@ public class DataHanding {
         GestionXLSX lector = new GestionXLSX();
         ArrayList<String> result = lector.recibirPedidoAyuda(pedido.getNombreONG(), pedido.getDirecciones(), pedido.getNombresProveedor(), pedido.getProductos(), pedido.getCantidades());
         return result;
+    }
+    public ArrayList<DatosXLSX> filtrarProveedor(String proveedor){
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        ArrayList<DatosXLSX> listaAux = new ArrayList<DatosXLSX>();
+        lista = obtenDatosPoblacion("Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx");
+        for(int i = 0; i < lista.size(); i++){
+            if (lista.get(i).getProveedorOrigen().equals(proveedor)) {
+                listaAux.add(lista.get(i));
+            }
+        }
+        return listaAux;
+    }
+    public int comprobarInicioSesion(String usuario,String contrasena) throws IOException {
+        RegistroUsuario registroUsuario = new RegistroUsuario();
+        ArrayList<Usuario> usuarios = registroUsuario.cargarUsuariosDesdeJSON();
+        int respuesta = -1;
+        if(usuarios.isEmpty() == true){
+            return -1;//no se ha cargado correctamente la lista de usuarios
+        }else{
+            for(int i = 0; i < usuarios.size(); i++){
+                if(usuarios.get(i).getUsuario().equals(usuario) && usuarios.get(i).getContrasena().equals(contrasena)){
+                    respuesta = 1;
+                    return respuesta;
+                }
+            }
+        }
+        return 0;
     }
 }

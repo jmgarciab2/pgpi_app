@@ -31,7 +31,7 @@ public class Usuario{
         this.usuario = id;
     }
 
-    public String getContraseña() {
+    public String getContrasena() {
         return contrasena;
     }
 

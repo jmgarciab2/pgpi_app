@@ -13,10 +13,10 @@ import java.util.List;
 
 
 public class RegistroUsuario {
-    private static final String USUARIOS_JSON_FILE = "./src/main/resources/usuarios.json";
+    private static final String USUARIOS_JSON_FILE = "Back/Back/src/main/resources/usuarios.json";
 
     // Función para cargar usuarios desde el archivo JSON
-    private static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
+    static ArrayList<Usuario> cargarUsuariosDesdeJSON() throws IOException {
 
         try {
             // Lee el fichero que le pasemos y lo carga en un reader
@@ -41,7 +41,7 @@ public class RegistroUsuario {
 
             System.out.println(usuarios);
             for (Usuario u : usuarios) {
-                if (u.getUsuario().equals(usuario) && u.getContraseña().equals(contrasena)) {
+                if (u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)) {
                     encontrado = true;
                 }
             }

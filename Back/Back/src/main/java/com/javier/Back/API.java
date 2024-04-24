@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -65,10 +66,10 @@ public class API {
     //Registro
     @PostMapping("/registro")
     public ResponseEntity<String> registrarUsuario(@RequestBody Usuario nuevoUsuario) {
-        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña())) {
+        if (!registroUsuario.usuarioYaRegistrado(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena())) {
             try {
                 // Llamamos al método de RegistroUsuario para registrar el nuevo usuario
-                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContraseña(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
+                registroUsuario.registrarUsuario(nuevoUsuario.getUsuario(), nuevoUsuario.getContrasena(), nuevoUsuario.getEmail(), nuevoUsuario.getFechaNacimiento());
 
                 // Retorna una respuesta exitosa si el usuario se registró correctamente
                 return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado correctamente.");
@@ -84,8 +85,24 @@ public class API {
     }
 
     @GetMapping("/inicioSesion")
-    public ResponseEntity<String> iniciarSesion(@PathVariable String usuario, @PathVariable String contrasena){
-        return null;
+    public int iniciarSesion(@RequestParam String usuario, @RequestParam String contrasena) throws IOException {
+        DataHanding dataHanding = new DataHanding();
+        int respuesta = dataHanding.comprobarInicioSesion(usuario, contrasena);
+        return respuesta;
     }
-
+    @GetMapping("/filtrado")
+    public ArrayList<DatosXLSX> filtrarProveedor(@RequestParam String proveedor){
+        DataHanding dataHanding = new DataHanding();
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        lista = dataHanding.filtrarProveedor(proveedor);
+        return lista;
+    }
+    @GetMapping("/imprimir")
+    public ArrayList<DatosXLSX> imprimirPedido(@RequestBody Pedido pedido){
+        GestionPDF gestionPDF = new GestionPDF();
+        String file = "Back/Back/src/main/resources/Impresion/Info del pedido" + String.valueOf(pedido.getId()) + ".pdf" ;
+        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        gestionPDF.imprimirPedidoEnPDF(pedido, file);
+        return lista;
+    }
 }
