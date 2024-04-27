@@ -1,20 +1,17 @@
 package org.vaadin.example;
 
+import org.vaadin.example.objetos_parametro.DatosJSON;
+import org.vaadin.example.objetos_parametro.DatosXLSX;
+import org.vaadin.example.objetos_parametro.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.http.HttpStatus;
 
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -76,7 +73,7 @@ public class DataService {
         return datos;
     }
 
-    public static boolean addDato(@RequestBody DatosJSON datin) {
+    public static boolean addDato(DatosJSON datin) {
         // Crear una instancia de Gson para convertir objetos a JSON y viceversa
         Gson g = new Gson();
         boolean result = false;
@@ -116,7 +113,7 @@ public class DataService {
     }
 
 
-    public static ArrayList<DatosJSON> actualizarDatos(@RequestBody ArrayList<DatosJSON> listaDatossaux) throws URISyntaxException, IOException, InterruptedException {
+    public static ArrayList<DatosJSON> actualizarDatos(ArrayList<DatosJSON> listaDatossaux) throws URISyntaxException, IOException, InterruptedException {
         // Crear una instancia de Gson para convertir objetos a JSON y viceversa
         Gson g = new Gson();
 
@@ -141,8 +138,7 @@ public class DataService {
         return listaDatosActualizada;
     }
 
-    @DeleteMapping("/eliminarDato/{_id}")
-    public static ArrayList<DatosJSON> eliminarDato(@PathVariable UUID _id) {
+    public static ArrayList<DatosJSON> eliminarDato(UUID _id) {
         try {
             // Crear una instancia de Gson para convertir objetos a JSON y viceversa
             Gson g = new Gson();
@@ -204,5 +200,80 @@ public class DataService {
         // Devolver la lista de datos
         return datos;
     }
+
+    public static boolean addUsuario(Usuario nuevoUsuario) {
+        // Crear una instancia de Gson para convertir objetos a JSON y viceversa
+        Gson g = new Gson();
+        boolean result = false;
+        String usuarioJson = g.toJson(nuevoUsuario); // Convertir el objeto Usuario a JSON
+
+        try {
+            // Construir la solicitud HTTP para enviar datos al endpoint "/registro"
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(urlPrefix + "/registro")) // Asegúrate de que urlPrefix esté definido y apunte al backend correcto
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(usuarioJson))
+                    .build();
+
+            // Enviar la solicitud y obtener la respuesta del servidor
+            HttpResponse<String> response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Verificar el código de respuesta para determinar si el usuario se registró correctamente
+            int statusCode = response.statusCode();
+            if (statusCode == HttpStatus.CREATED.value()) {
+                // El usuario se registró correctamente
+                result = true;
+            } else {
+                // Hubo un error al registrar el usuario
+                System.out.println("Error al registrar el usuario. Código de respuesta: " + statusCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            // Manejar cualquier excepción ocurrida durante la comunicación
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+    public static int iniciarSesion(String usuario, String contrasena) throws IOException, URISyntaxException{
+        int iniciosesioncorrecto = 0;
+
+        // Construir la URL con el msCode proporcionado
+        URI uri = new URI(urlPrefix + "/inicioSesion?usuario="+usuario+"&contrasena="+contrasena);
+
+        // Crear la solicitud GET
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(uri).GET().build();
+
+        // Crear un objeto Gson para deserializar la respuesta
+        Gson gson = new Gson();
+
+        // Variables para almacenar el resultado de la solicitud
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+
+        try {
+            // Enviar la solicitud y obtener la respuesta
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+
+            System.out.println(resultado);
+
+            // Deserializar la respuesta a la lista de DatosJSON
+            iniciosesioncorrecto = gson.fromJson(resultado, new TypeToken<Integer>() {
+            }.getType());
+
+        } catch (IOException | InterruptedException e) {
+            // Manejar las excepciones
+            throw new RuntimeException(e);
+        }
+
+        // Devolver la lista de datos
+        return iniciosesioncorrecto;
+    }
+
+
+
+
+
 }
 

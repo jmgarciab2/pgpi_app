@@ -1,13 +1,11 @@
-package org.vaadin.example;
+package org.vaadin.example.views;
 
+import org.vaadin.example.objetos_parametro.DatosXLSX;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
-import org.vaadin.example.DatosXLSX;
+import org.vaadin.example.DataService;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -16,9 +14,9 @@ import java.util.List;
 
 @Route("datos-ayuda-humanitaria-origen")
 
-public class DatosAyudaHumanitariaOrigenView extends VerticalLayout {
+public class DatosAyudaHumanitariaOrigenLayout extends VerticalLayout {
 
-    public DatosAyudaHumanitariaOrigenView() throws IOException, URISyntaxException {
+    public DatosAyudaHumanitariaOrigenLayout() throws IOException, URISyntaxException {
         // Configuración del diseño
         setSizeFull();
         setAlignItems(Alignment.CENTER);

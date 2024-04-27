@@ -1,6 +1,4 @@
-package Objetos_parametro;
-
-import org.vaadin.example.Pedido;
+package org.vaadin.example.objetos_parametro;
 
 import java.util.ArrayList;
 

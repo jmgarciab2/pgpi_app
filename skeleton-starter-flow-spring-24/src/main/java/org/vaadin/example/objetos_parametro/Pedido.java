@@ -1,4 +1,4 @@
-package Objetos_parametro;
+package org.vaadin.example.objetos_parametro;
 
 import com.google.gson.Gson;
 

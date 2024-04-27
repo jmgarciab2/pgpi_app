@@ -1,31 +1,37 @@
 [ {
   "usuario" : "usuario",
+  "contrasena" : "1",
   "email" : "usuario1@example.com",
   "fechaNacimiento" : "1990-01-01",
-  "pedidos" : [ ],
-  "contrasena" : 1
+  "pedidos" : [ ]
 }, {
   "usuario" : "usuario2",
+  "contrasena" : "aaaa",
   "email" : "usuario2@example.com",
   "fechaNacimiento" : "1995-05-05",
-  "pedidos" : [ ],
-  "contrasena" : "aaaa"
+  "pedidos" : [ ]
 }, {
   "usuario" : "usuario3",
+  "contrasena" : null,
   "email" : "usuario3@example.com",
   "fechaNacimiento" : "1985-10-10",
-  "pedidos" : [ ],
-  "contrasena" : null
+  "pedidos" : [ ]
 }, {
   "usuario" : "usuario4",
+  "contrasena" : null,
   "email" : "usuario4@example.com",
   "fechaNacimiento" : "1990-01-01",
-  "pedidos" : [ ],
-  "contrasena" : null
+  "pedidos" : [ ]
 }, {
   "usuario" : "usuario5",
+  "contrasena" : null,
   "email" : "usuario5@example.com",
   "fechaNacimiento" : "1990-03-01",
-  "pedidos" : [ ],
-  "contrasena" : null
+  "pedidos" : [ ]
+}, {
+  "usuario" : "hola",
+  "contrasena" : "hola",
+  "email" : "hola@gmail.com",
+  "fechaNacimiento" : "24/09/2024",
+  "pedidos" : [ ]
 } ]

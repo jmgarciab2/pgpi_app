@@ -1,4 +1,4 @@
-package org.vaadin.example;
+package org.vaadin.example.objetos_parametro;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package Objetos_parametro;
+package org.vaadin.example.objetos_parametro;
 
 public class DatosXLSX {
     private String proveedorOrigen;

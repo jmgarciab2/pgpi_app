@@ -55,7 +55,7 @@ public class API {
     @GetMapping("/obtenerDatosAyudaHumanitaria")
     public ArrayList<DatosXLSX> getDatosAyudaHumanitaria(){
         DataHanding data = new DataHanding();
-        String fichero = "Back/Back/src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
+        String fichero = "./src/main/resources/Ejemplo_Proov_Ref_2024.xlsx";
         return data.obtenDatosPoblacion(fichero);
     }
     @PutMapping("/recibirPedido")
@@ -97,12 +97,12 @@ public class API {
         lista = dataHanding.filtrarProveedor(proveedor);
         return lista;
     }
-    @GetMapping("/imprimir")
-    public ArrayList<DatosXLSX> imprimirPedido(@RequestBody Pedido pedido){
+    @PostMapping("/imprimir")
+    public void imprimirPedido(@RequestBody Pedido pedido){
         GestionPDF gestionPDF = new GestionPDF();
-        String file = "Back/Back/src/main/resources/Impresion/Info del pedido" + String.valueOf(pedido.getId()) + ".pdf" ;
+        String file = "Back/Back/src/main/resources/Impresion/Info_del_pedido" + pedido.getId() + ".pdf" ;
         ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
         gestionPDF.imprimirPedidoEnPDF(pedido, file);
-        return lista;
+
     }
 }
