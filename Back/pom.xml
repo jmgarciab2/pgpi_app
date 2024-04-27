@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.javier</groupId>
-	<artifactId>Backend</artifactId>
+	<artifactId>Back</artifactId>
 	<version>1.2</version>
 	<name>Back</name>
 	<description>Practica 2 - Javier Muñoz Rojas</description>
