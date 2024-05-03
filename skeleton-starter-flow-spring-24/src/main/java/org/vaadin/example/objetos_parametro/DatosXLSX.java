@@ -1,16 +1,25 @@
-package Objetos_parametro;
+package org.vaadin.example.objetos_parametro;
 
 public class DatosXLSX {
     private String proveedorOrigen;
     private String referencia;
     private double cantidad;
     private int tiempoEntregaDias;
+    private int cantidadSeleccionada;
 
     public DatosXLSX(String proveedorOrigen, String referencia, double cantidad, int tiempoEntregaDias) {
         this.proveedorOrigen = proveedorOrigen;
         this.referencia = referencia;
         this.cantidad = cantidad;
         this.tiempoEntregaDias = tiempoEntregaDias;
+    }
+
+    public int getCantidadSeleccionada() {
+        return cantidadSeleccionada;
+    }
+
+    public void setCantidadSeleccionada(int cantidadSeleccionada) {
+        this.cantidadSeleccionada = cantidadSeleccionada;
     }
 
     public String getProveedorOrigen() {

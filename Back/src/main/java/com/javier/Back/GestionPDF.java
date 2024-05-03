@@ -38,9 +38,10 @@ public class GestionPDF {
 
             // Escribir el encabezado
             contentStream.beginText();
-            contentStream.newLineAtOffset(100, 700);
+
             contentStream.showText("Registro de Pedidos");
             contentStream.newLine();
+            contentStream.newLineAtOffset(100, 700);
             contentStream.newLine();
             contentStream.newLineAtOffset(0, -20);
             // Escribir los detalles del pedido
@@ -49,8 +50,6 @@ public class GestionPDF {
             contentStream.showText("Nombre de la ONG: " + pedido.getNombreONG());
             contentStream.newLineAtOffset(0, -20);
             contentStream.showText("Dirección de entrega: " + pedido.getDirecciones());
-            contentStream.newLineAtOffset(0, -20);
-            contentStream.showText("Productos:");
             contentStream.newLineAtOffset(0, -20);
             contentStream.newLine();
             for (int i = 0; i < pedido.getProductos().size(); i++) {

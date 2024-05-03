@@ -1,5 +1,6 @@
-package org.vaadin.example;
+package org.vaadin.example.views;
 
+import org.vaadin.example.objetos_parametro.DatosJSON;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
@@ -24,6 +25,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import org.vaadin.example.DataService;
 
 
 //Se desarrollarán las dos pestañas requeridas
