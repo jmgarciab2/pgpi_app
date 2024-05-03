@@ -97,11 +97,11 @@ public class API {
         lista = dataHanding.filtrarProveedor(proveedor);
         return lista;
     }
+
     @PostMapping("/imprimir")
     public void imprimirPedido(@RequestBody Pedido pedido){
         GestionPDF gestionPDF = new GestionPDF();
-        String file = "Back/Back/src/main/resources/Impresion/Info_del_pedido" + pedido.getId() + ".pdf" ;
-        ArrayList<DatosXLSX> lista = new ArrayList<DatosXLSX>();
+        String file = "./src/main/resources/Impresion/Info_del_pedido" + pedido.getId() + ".pdf" ;
         gestionPDF.imprimirPedidoEnPDF(pedido, file);
 
     }

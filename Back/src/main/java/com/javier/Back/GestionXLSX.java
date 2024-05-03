@@ -46,7 +46,6 @@ public class GestionXLSX {
     // Método para recibir un pedido de ayuda en el portal
     public static ArrayList<String> recibirPedidoAyuda(String nombreONG, String direccionONG, ArrayList<String> nombresProveedor, ArrayList<String> referencias, ArrayList<Double> cantidades) {
         ArrayList<String> listaPicking = new ArrayList<>();
-
         // Verificar disponibilidad de stock para cada referencia en el pedido
         for (int i = 0; i < referencias.size(); i++) {
             String nombreProveedor = nombresProveedor.get(i);

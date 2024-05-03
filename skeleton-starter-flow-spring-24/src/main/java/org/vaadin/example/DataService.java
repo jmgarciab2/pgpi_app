@@ -2,6 +2,7 @@ package org.vaadin.example;
 
 import org.vaadin.example.objetos_parametro.DatosJSON;
 import org.vaadin.example.objetos_parametro.DatosXLSX;
+import org.vaadin.example.objetos_parametro.Pedido;
 import org.vaadin.example.objetos_parametro.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -271,6 +272,40 @@ public class DataService {
         return iniciosesioncorrecto;
     }
 
+    public static void imprimirPedido(Pedido pedido) {
+        // Crear una instancia de Gson para convertir objetos a JSON y viceversa
+        Gson g = new Gson();
+
+        ArrayList<DatosJSON> lAux = new ArrayList<>();
+        // Obtener la representación en formato JSON de los datos utilizando el método mostrarJson()
+        String datospasar = pedido.toJSON();
+
+        try {
+            // Construir la solicitud HTTP para enviar datos al endpoint "/addDatos"
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(urlPrefix + "/imprimir")) // Asegúrate de que urlPrefix esté definido y apunte al backend correcto
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(datospasar))
+                    .build();
+
+            // Enviar la solicitud y obtener la respuesta del servidor
+            HttpResponse<String> response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Obtener la respuesta en formato JSON del servidor
+            String respuestaActual = response.body();
+
+            // Convertir la respuesta JSON a un objeto DatosJSON usando Gson
+            lAux = g.fromJson(respuestaActual, new TypeToken<ArrayList<DatosJSON>>() {}.getType());
+
+            // Puedes realizar acciones adicionales con el objeto 'datin' después de la conversión
+
+        } catch (IOException | InterruptedException e) {
+            // Manejar cualquier excepción ocurrida durante la comunicación
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
