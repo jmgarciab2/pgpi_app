@@ -1,0 +1,61 @@
+[ {
+  "usuario" : "usuario",
+  "contrasena" : "1",
+  "email" : "usuario1@example.com",
+  "fechaNacimiento" : "1990-01-01",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "usuario2",
+  "contrasena" : "aaaa",
+  "email" : "usuario2@example.com",
+  "fechaNacimiento" : "1995-05-05",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "usuario3",
+  "contrasena" : null,
+  "email" : "usuario3@example.com",
+  "fechaNacimiento" : "1985-10-10",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "usuario4",
+  "contrasena" : null,
+  "email" : "usuario4@example.com",
+  "fechaNacimiento" : "1990-01-01",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "usuario5",
+  "contrasena" : null,
+  "email" : "usuario5@example.com",
+  "fechaNacimiento" : "1990-03-01",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "hola",
+  "contrasena" : "hola",
+  "email" : "hola@gmail.com",
+  "fechaNacimiento" : "24/09/2024",
+  "pedidos" : [ ]
+}, {
+  "usuario" : "admin",
+  "contrasena" : "admin",
+  "email" : null,
+  "fechaNacimiento" : null,
+  "pedidos" : [ ]
+}, {
+  "usuario" : "info@nlcapacities.com",
+  "contrasena" : "admin",
+  "email" : null,
+  "fechaNacimiento" : null,
+  "pedidos" : [ ]
+}, {
+  "usuario" : "correo@novalido.com",
+  "contrasena" : "admin",
+  "email" : null,
+  "fechaNacimiento" : null,
+  "pedidos" : [ ]
+}, {
+  "usuario" : "registro@gmail.com",
+  "contrasena" : "registro",
+  "email" : null,
+  "fechaNacimiento" : null,
+  "pedidos" : [ ]
+} ]
