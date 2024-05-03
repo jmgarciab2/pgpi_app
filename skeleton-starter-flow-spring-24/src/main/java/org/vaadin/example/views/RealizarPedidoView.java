@@ -225,7 +225,10 @@ public class RealizarPedidoView extends VerticalLayout {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        this.setSpacing(true);
     }
+
 
     // Define un evento para comunicar el pedido realizado
     public static class PedidoRealizadoEvent extends ComponentEvent<RealizarPedidoView> {
